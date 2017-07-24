@@ -1,5 +1,7 @@
 $(document).ready(function() {
- $(document).ready(function() {
+
+  $('.oneField').css('opacity', 0);
+
   var hasSignedAgreement = $('#tfa_2')[0].value === 'true';
 
   var meetsRequirements = $('#tfa_4')[0].value === 'Yes Meets Requirements';
@@ -14,7 +16,8 @@ $(document).ready(function() {
     group = 2;
   }
 
-  console.log('Group', group)
+  $('.wFormTitle').append('<h2 class= "group">Group ' + group + '</h2>');
+
 });
 
 
