@@ -1,68 +1,106 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-<script src="https://use.fontawesome.com/d71be07bfc.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js"></script>
-
-
+<script src="https://use.typekit.net/xkd5uwz.js"></script>
+<script>try{Typekit.load({ async: true });}catch(e){}</script>
 
 <style type="text/css">
   body {
-    height: 100px;
-    background-color: grey;
+    background: url('http://www.artic.edu/~nhaven/img/orientationbackground2.png');
+    background-size: 1000px 1400px;
+    background-repeat: no-repeat;
+    font-family: 'futura-pt-bold';
+    color: #FBB03B;
   }
 
-  .wFormTitle, .oneField, .supportInfo * {
+  .title-bar * {
+    text-align: center;
+    font-size: 25px;
+    margin: 0;
+    padding-top: 20px;
+    padding-bottom: 50px;
+  }
+
+  .wForm *, .wFormContainer, .wFormTitle, .oneField, .supportInfo * {
     display: none;
-  }
-
-  .wFormContainer {
     border-style: none;
   }
 
-  .primaryAction, #tfa_content {
-    display: none;
-  }
-
-  .submit {
+  .submit, .reset {
+    font-size: 25px;
     margin: auto;
-    border: 2px solid green;
+    border: 2px solid #FBB03B;
+    border-radius: 30px;
+    padding: 15px 5px 10px 5px;
     text-align: center;
     height: 40px;
     width: 30%;
   }
 
-  .group {
+  .message {
+    font-size: 45px;
     margin: auto;
-    border: 2px solid black;
     text-align: center;
-    height: 60px;
-    width: 30%;
+    width: 80%;
+  }
+
+  .group {
+    font-size: 100px;
+    color: blue;
+    margin: auto;
+    text-align: center;
+    width: 80%;
+    margin-top: 50px;
+    margin-bottom: 70px;
+  }
+
+  .reset {
+    margin-top: 100px;
   }
 </style>
 
 <script>
 $(document).ready(function() {
-  var hasSignedAgreement = $('#tfa_2')[0].value === 'true';
-  var meetsRequirements = $('#tfa_4')[0].value === 'Yes Meets Requirements';
-  var group = 3;
 
-  if (hasSignedAgreement && meetsRequirements) {
-    group = 1;
-  } else if (hasSignedAgreement) {
-    group = 2;
+  var $titleBar = $('<div class="title-bar"><h1>New Student Laptop Orientation</h1></div>');
+  $('body').append($titleBar);
+
+  if ($('.errorMessage').length) {
+    var idNum = window.location.search.slice(8);
+
+    $('.errorMessage').hide();
+    $('body').append('<div class="message">No record was found for ID Number "' + idNum + '" please press the "Reset Form" button and try again with a valid Student ID Number</div>');
+
+    var $reset = $('<div class="reset">Reset Form</div>')
+    $('body').append($reset);
+
+    $reset.on('click', function() {
+      $(this).animate({'background-color': '#FBB03B', color: '#ED1E79'}, 300);
+      window.location.href = window.location.href = 'http://www.artic.edu/~nhaven/';
+    });
+
+
+  } else {
+    var hasSignedAgreement = $('#tfa_2')[0].value === 'true';
+    var meetsRequirements = $('#tfa_4')[0].value === 'Yes Meets Requirements';
+    var group = 3;
+
+    if (hasSignedAgreement && meetsRequirements) {
+      group = 1;
+    } else if (hasSignedAgreement) {
+      group = 2;
+    }
+
+    var $submitButton = $('<div class="submit">Complete</div>');
+    var $message = $('<div class="message"> Please press the "Complete" button and proceed to:</div>');
+    var $group = $('<div class="group">Group ' + group + '</div>')
+
+    $('body').append($message, $group, $submitButton);
+
+    $submitButton.on('click', function() {
+      $(this).animate({'background-color': '#FBB03B', color: '#ED1E79'}, 300);
+      $('.primaryAction').click();
+    });
   }
-
-  var $submitButton = $('<div class="submit">Done</div>');
-  var $groupView = $('<div class="group">Group ' + group + '</div>');
-
-  $('body').append($groupView, $submitButton);
-
-  $submitButton.on('click', function() {
-    $('.primaryAction').click();
-  });
-
-//group1
-  //signed and meets requirements
-
 
 
 });

@@ -5,11 +5,12 @@ $(document).ready(function() {
 
   $('body').on('click', function() {
     $idField.show().focus();
-    $('.instructions').hide();
+    $('.instructions, .bottom-arrow').hide();
+    $('.top-arrow').css('opacity', 0);
   })
 
   $idField.on('keyup', function() {
-    //console.log($(this).val());
+
     var idNum = $(this).val();
 
     if (idNum.length === 14) {
@@ -17,8 +18,9 @@ $(document).ready(function() {
     }
 
     if (idNum.length === 7) {
+      $('.top-arrow, .bottom-arrow, .id-pic, input').hide();
+      $('.spinner').show();
       window.location.href = 'https://forms2.saic.edu/53?EMPLID=' + idNum;
-      //$('body').append('<div><iframe src="https://forms2.saic.edu/53?EMPLID="' + idNum + '></div>')
     }
   });
 

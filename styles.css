@@ -5,65 +5,71 @@
 .title-bar * {
   display: block;
   text-align: center;
-  background: ;
   color: white;
-  font-family: 'Libre Franklin', sans-serif;
-  font-weight: 600;
+  font-family: "futura-pt-bold";
+  color: #FBB03B;
   font-size: 25px;
   margin: 0;
-  padding-top: 20px;
+  padding-top: 27px;
   padding-bottom: 20px;
 }
 
 body {
   color: white;
   height: 800px;
-  background-image: url('img/orientationformmock.png');
+  background: url('img/orientationbackground2.png');
+  background-size: 1000px 1400px;
   background-repeat: no-repeat;
   margin: 0;
-  font-family: 'Libre Franklin', sans-serif;
+  font-family: "futura-pt-bold";
+  color: #FBB03B;
 }
 
 .form-top-text {
-  font-size: 45px;
-  margin: 0;
-}
-
-.fa {
-  padding-top: 20px;
-  display: block;
-  font-size: 120px;
+  font-size: 55px;
+  margin-top: 35px;
+  margin-bottom: 0;
 }
 
 input {
   margin: auto;
-  height: 70px;
-  width: 350px;
-  font-size: 40px;
+  height: 50px;
+  width: 250px;
+  font-size: 30px;
   display: none;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 100px;
+  margin-top: 80px;
   left: 0;
   right: 0;
 }
 
 .instructions {
   position: relative;
-  top: 125px;
+  font-size: 16px
+  top: 100px;
 }
 
 .id-pic {
-  margin-top: 35px;
+  margin-top: 0;
   margin-left: auto;
   margin-right: auto;
-  height: 200px;
+  height: 250px;
   display: block;
 }
 
-.arrow {
-  margin-top: 35px;
-  margin-left: 350px;
-  height: 100px;
+.top-arrow, .bottom-arrow {
+  margin-top: 5px;
+  margin-left: auto;
+  height: 170px;
+}
+
+.spinner {
+  height: 200px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 150px;
+  display: none;
+}
 
 
