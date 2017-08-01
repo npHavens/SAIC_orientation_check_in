@@ -88,10 +88,12 @@ $(document).ready(function() {
     var hasBeenContacted = $('#tfa_5')[0].value === 'true';
     var group = 3;
 
-    if (hasSignedAgreement && meetsRequirements || hasBeenContacted) {
-      group = 1;
-    } else if (hasSignedAgreement) {
-      group = 2;
+    if (hasSignedAgreement) {
+      if (meetsRequirements || hasBeenContacted) {
+        group = 1;
+      } else {
+        group = 2;
+      }
     }
 
     var $submitButton = $('<div class="submit">Complete</div>');
