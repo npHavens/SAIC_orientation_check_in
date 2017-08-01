@@ -26,35 +26,39 @@
   }
 
   .submit, .reset {
-    font-size: 25px;
+    font-size: 35px;
     margin: auto;
     border: 2px solid #FBB03B;
-    border-radius: 30px;
-    padding: 15px 5px 10px 5px;
+    border-radius: 50px;
+    padding: 30px 5px 15px 5px;
     text-align: center;
-    height: 40px;
-    width: 30%;
+    height: 60px;
+    width: 40%;
+    margin-top: 50px;
+    background-color: #EF4345;
   }
 
   .message {
-    font-size: 45px;
+    font-size: 65px;
     margin: auto;
     text-align: center;
     width: 80%;
+    margin-bottom: 50px
   }
 
   .group {
-    font-size: 100px;
-    color: blue;
+    display: block;
+    height: 600px;
     margin: auto;
-    text-align: center;
-    width: 80%;
-    margin-top: 50px;
-    margin-bottom: 70px;
   }
 
   .reset {
     margin-top: 100px;
+  }
+
+  .instructions {
+    margin-top: -70px;
+     font-size: 40px;
   }
 </style>
 
@@ -68,7 +72,7 @@ $(document).ready(function() {
     var idNum = window.location.search.slice(8);
 
     $('.errorMessage').hide();
-    $('body').append('<div class="message">No record was found for ID Number "' + idNum + '" please press the "Reset Form" button and try again with a valid Student ID Number</div>');
+    $('body').append('<div class="message">No record was found for ID Number "' + idNum + '" Please press the reset button below and try again with a valid Student ID Number</div>');
 
     var $reset = $('<div class="reset">Reset Form</div>')
     $('body').append($reset);
@@ -78,30 +82,30 @@ $(document).ready(function() {
       window.location.href = window.location.href = 'http://www.artic.edu/~nhaven/';
     });
 
-
   } else {
     var hasSignedAgreement = $('#tfa_2')[0].value === 'true';
     var meetsRequirements = $('#tfa_4')[0].value === 'Yes Meets Requirements';
+    var hasBeenContacted = $('#tfa_5')[0].value === 'true';
     var group = 3;
 
-    if (hasSignedAgreement && meetsRequirements) {
+    if (hasSignedAgreement && meetsRequirements || hasBeenContacted) {
       group = 1;
     } else if (hasSignedAgreement) {
       group = 2;
     }
 
     var $submitButton = $('<div class="submit">Complete</div>');
-    var $message = $('<div class="message"> Please press the "Complete" button and proceed to:</div>');
-    var $group = $('<div class="group">Group ' + group + '</div>')
+    var $message = $('<div class="message"> You are in: </div>');
+    var $group = $('<img class="group" src="http://www.artic.edu/~nhaven/img/group' + group + '.gif"></>');
+    var $instructions = $('<div class="message instructions"> Press the button below to finish</div>');
 
-    $('body').append($message, $group, $submitButton);
+    $('body').append($message, $group, $instructions, $submitButton);
 
     $submitButton.on('click', function() {
       $(this).animate({'background-color': '#FBB03B', color: '#ED1E79'}, 300);
       $('.primaryAction').click();
     });
   }
-
 
 });
 </script>

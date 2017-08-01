@@ -18,7 +18,7 @@ $(document).ready(function() {
     }
 
     if (idNum.length === 7) {
-      $('.top-arrow, .bottom-arrow, .id-pic, input').hide();
+      $('.top-arrow, .bottom-arrow, .id-pic, input, .form-top-text').hide();
       $('.spinner').show();
       window.location.href = 'https://forms2.saic.edu/53?EMPLID=' + idNum;
     }
