@@ -82,13 +82,10 @@
 
 <script>
 $(document).ready(function() {
-
   var $titleBar = $('<div class="title-bar"><h1>New Student Laptop Orientation</h1></div>');
   $('body').append($titleBar);
 
   if ($('.errorMessage').length) {
-
-    //console.log($('.errorMessage').text().split('.')[1]);
     if ($('.errorMessage').text().split('.')[1] === '2') {
       window.location.href = 'http://www.artic.edu/~nhaven/';
     } else {
