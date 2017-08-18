@@ -29,12 +29,12 @@
     font-size: 35px;
     margin: auto;
     border: 2px solid #FBB03B;
-    border-radius: 50px;
+    border-radius: 70px;
     padding: 30px 5px 15px 5px;
     text-align: center;
     height: 60px;
-    width: 40%;
-    margin-top: 50px;
+    width: 50%;
+    /*margin-top: 50px;*/
     background-color: #EF4345;
   }
 
@@ -60,6 +60,24 @@
     margin-top: -70px;
      font-size: 40px;
   }
+
+  .spinner {
+    height: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    display: none;
+    margin-top: 240px;
+    margin-bottom: 325px;
+  }
+
+  .reset-message {
+    font-size: 35px;
+    margin: auto;
+    text-align: center;
+    width: 80%;
+    margin-bottom: 50px
+  }
+
 </style>
 
 <script>
@@ -69,18 +87,24 @@ $(document).ready(function() {
   $('body').append($titleBar);
 
   if ($('.errorMessage').length) {
-    var idNum = window.location.search.slice(8);
 
-    $('.errorMessage').hide();
-    $('body').append('<div class="message">No record was found for ID Number "' + idNum + '" Please press the reset button below and try again with a valid Student ID Number</div>');
+    //console.log($('.errorMessage').text().split('.')[1]);
+    if ($('.errorMessage').text().split('.')[1] === '2') {
+      window.location.href = 'http://www.artic.edu/~nhaven/';
+    } else {
+      var idNum = window.location.search.slice(8);
 
-    var $reset = $('<div class="reset">Reset Form</div>')
-    $('body').append($reset);
+      $('.errorMessage').hide();
+      $('body').append('<div class="reset-message">No record was found for ID Number "' + idNum + '" Please press the reset button below and try again with a valid Student ID Number</div>');
 
-    $reset.on('click', function() {
-      $(this).animate({'background-color': '#FBB03B', color: '#ED1E79'}, 300);
-      window.location.href = window.location.href = 'http://www.artic.edu/~nhaven/';
-    });
+      var $reset = $('<div class="reset">Reset Form</div>')
+      $('body').append($reset);
+
+      $reset.on('click', function() {
+        $(this).animate({'background-color': '#FBB03B', color: '#ED1E79'}, 300);
+        window.location.href = 'http://www.artic.edu/~nhaven/';
+      });
+    }
 
   } else {
     var hasSignedAgreement = $('#tfa_2')[0].value === 'true';
@@ -100,11 +124,15 @@ $(document).ready(function() {
     var $message = $('<div class="message"> You are in: </div>');
     var $group = $('<img class="group" src="http://www.artic.edu/~nhaven/img/group' + group + '.gif"></>');
     var $instructions = $('<div class="message instructions"> Press the button below to finish</div>');
+    var $spinner = $('<img class="spinner" src="http://www.artic.edu/~nhaven/img/LOADINGBARSQ6.gif"></img>')
 
-    $('body').append($message, $group, $instructions, $submitButton);
+    $('body').append($message, $group, $spinner, $instructions, $submitButton);
 
     $submitButton.on('click', function() {
+      $('.message, .group, .instructions').hide();
+      $('.spinner').css('display', 'block').show();
       $(this).animate({'background-color': '#FBB03B', color: '#ED1E79'}, 300);
+      $(this).text('Thank you. Check-in Complete').css({'padding-top': '10px', 'height': '80px'});
       $('.primaryAction').click();
     });
   }

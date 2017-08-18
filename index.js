@@ -17,7 +17,7 @@ $(document).ready(function() {
       $idField.val(idNum.substring(5, 12));
     }
 
-    if (idNum.length === 7) {
+    if (idNum.length === 7 || (idNum.length === 8 && idNum[0] === 'E')) {
       $('.top-arrow, .bottom-arrow, .id-pic, input, .form-top-text').hide();
       $('.spinner').show();
       window.location.href = 'https://forms2.saic.edu/53?EMPLID=' + idNum;
