@@ -17,17 +17,21 @@ $(document).ready(function() {
   })
 });
 
-var $processBarCode = function($idField, callback) {
-  setTimeout(function() {
-    $processBarCode($idField, callback);
+var $processBarCode = function($field, callback) {
+  var process = setTimeout(function() {
+    $processBarCode($field, callback);
   }, 1000);
-  var idNum =  $idField.val();
+
+  var idNum = $field.val();
 
   if (idNum.length === 14) {
     callback(idNum.slice(5, 12));
+    clearTimeout(process);
   }
 
   if (idNum.length === 7 || (idNum.length === 8 && idNum[0] === 'E')) {
     callback(idNum);
+    clearTimeout(process);
   }
+  //;
 }
