@@ -107,11 +107,14 @@ $(document).ready(function() {
     var hasSignedAgreement = $('#tfa_2')[0].value === 'true';
     var meetsRequirements = $('#tfa_4')[0].value === 'Yes Meets Requirements';
     var hasBeenContacted = $('#tfa_5')[0].value === 'true';
-    var group = 2;
+    var group = 3;
 
     if (hasSignedAgreement) {
       if (meetsRequirements || hasBeenContacted) {
         group = 1;
+      } else {
+        group = 2;
+      }
     }
 
     var $submitButton = $('<div class="submit">Complete</div>');
