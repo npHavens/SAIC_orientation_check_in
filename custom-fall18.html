@@ -5,7 +5,7 @@
 
 <style type="text/css">
   body {
-    background: url('http://www.artic.edu/~nhaven/img/orientationbackground2.png');
+    background: url('http://www.artic.edu/~jacks/img/orientationbackground2.png');
     background-size: 1000px 1400px;
     background-repeat: no-repeat;
     font-family: 'futura-pt-bold';
@@ -87,7 +87,7 @@ $(document).ready(function() {
 
   if ($('.errorMessage').length) {
     if ($('.errorMessage').text().split('.')[1] === '2') {
-      window.location.href = 'http://www.artic.edu/~nhaven/';
+      window.location.href = 'http://www.artic.edu/~jacks/';
     } else {
       var idNum = window.location.search.slice(8);
 
@@ -99,7 +99,7 @@ $(document).ready(function() {
 
       $reset.on('click', function() {
         $(this).animate({'background-color': '#FBB03B', color: '#ED1E79'}, 300);
-        window.location.href = 'http://www.artic.edu/~nhaven/';
+        window.location.href = 'http://www.artic.edu/~jacks/';
       });
     }
 
@@ -119,9 +119,9 @@ $(document).ready(function() {
 
     var $submitButton = $('<div class="submit">Complete</div>');
     var $message = $('<div class="message"> You are in: </div>');
-    var $group = $('<img class="group" src="http://www.artic.edu/~nhaven/img/group' + group + '.gif"></>');
+    var $group = $('<img class="group" src="http://www.artic.edu/~jacks/img/group' + group + '.gif"></>');
     var $instructions = $('<div class="message instructions"> Press the button below to finish</div>');
-    var $spinner = $('<img class="spinner" src="http://www.artic.edu/~nhaven/img/LOADINGBARSQ6.gif"></img>')
+    var $spinner = $('<img class="spinner" src="http://www.artic.edu/~jacks/img/LOADINGBARSQ6.gif"></img>')
 
     $('body').append($message, $group, $spinner, $instructions, $submitButton);
 
